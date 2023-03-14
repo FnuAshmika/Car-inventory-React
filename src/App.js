@@ -6,6 +6,7 @@ import { BrowserRoute, Routes, Route, Link, BrowserRouter } from 'react-router-d
 import Home from './views/Home';
 import Inventory from './views/Inventory';
 import Profile from './views/Profile'
+import CarSingle from './views/CarSingle';
 
 function App() {
   return (
@@ -21,6 +22,7 @@ function App() {
         <Route path='/' element={ <Home/> }/>
         <Route path='/inventory' element={ <Inventory/> }/>
         <Route path='/profile' element={ <Profile/> }/>
+        <Route path='/cars/:id' element={ <CarSingle/> }/>
       </Routes>
     </BrowserRouter>
    
