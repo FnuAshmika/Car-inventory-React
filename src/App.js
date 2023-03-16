@@ -1,14 +1,15 @@
 import logo from './logo.svg';
 import './App.css';
-import './App.css';
-import { useState } from 'react';
-import { BrowserRoute, Routes, Route, Link, BrowserRouter } from 'react-router-dom';
+import { useContext } from 'react';
+import { Routes, Route, Link, BrowserRouter } from 'react-router-dom';
 import Home from './views/Home';
 import Inventory from './views/Inventory';
 import Profile from './views/Profile'
 import CarSingle from './views/CarSingle';
+import { AuthContext } from './contexts/AuthProvider';
 
 function App() {
+  const { login, user, logout }= useContext(AuthContext)
   return (
     <BrowserRouter>
       <nav>
@@ -18,6 +19,14 @@ function App() {
           <li><Link to="/profile">Profile</Link></li>
         </ul>
       </nav>
+      <div>
+        {user.loggedIn? (
+          <>
+          <p>Current user: {user.displayName}</p>
+          <button onClick={logout}>Logout</button>
+          </>
+          ):(<button onClick={login}>Login</button>)}  
+      </div>
       <Routes>
         <Route path='/' element={ <Home/> }/>
         <Route path='/inventory' element={ <Inventory/> }/>
@@ -26,7 +35,7 @@ function App() {
       </Routes>
     </BrowserRouter>
    
-  );
+  )
 }
 
 export default App;

@@ -1,6 +1,7 @@
 import { useState, useEffect, createContext, useContext } from "react";
 import { getFirestore, getDocs, collection, doc, getDoc } from '@firebase/firestore';
 
+
 export const DataContext = createContext()
 export const DataProvider = function(props){
     const [cars, setCars] = useState([])
@@ -31,7 +32,7 @@ export const DataProvider = function(props){
        }
        return docSnap.data()
     }
-    getCar()
+    // getCar()
 
     const value = {
         cars,
